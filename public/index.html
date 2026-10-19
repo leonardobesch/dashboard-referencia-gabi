@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Referência Capital — Growth Funnel OS</title>
+<link rel="stylesheet" href="/styles.css?v=20260929-4" />
+<link rel="stylesheet" href="/dashboard-v3.css?v=20260930-4" />
+<link rel="stylesheet" href="/optimization.css?v=20260930-5" />
+<link rel="stylesheet" href="/rc.css?v=20261013-1" />
+</head>
+<body>
+<div class="app-shell">
+<header class="topbar">
+<div class="brand"><img src="/logo-oficial.png" class="brand-logo" alt="Referência Capital"><div><strong>Referência Capital</strong><span>Growth Funnel OS</span></div></div>
+<nav class="nav">
+<button class="nav-btn active" data-page="overview"><span>Visão Geral</span></button>
+<button class="nav-btn" data-page="optimization"><span>Otimização</span></button>
+<button class="nav-btn" data-page="audit"><span>Auditoria</span></button>
+<button class="nav-btn" data-page="funnel"><span>Funis</span></button>
+<button class="nav-btn" data-page="crm"><span>CRM</span></button>
+<button class="nav-btn" data-page="comercial"><span>Comercial</span></button>
+<button class="nav-btn" data-page="calculator"><span>Calculadora</span></button>
+</nav>
+<div class="header-actions">
+<span id="lastUpdated" class="last-updated">Atualizado —</span>
+<span id="metaBadge" class="system-badge"><i></i>Meta Ads</span>
+<span id="crmBadge" class="system-badge"><i></i>PipeRun</span>
+<button id="settingsBtn" class="settings-btn" aria-label="Configurações">⚙</button>
+</div>
+</header>
+<section id="periodBar" class="period-bar" aria-label="Período do painel">
+<span class="period-label">Período</span>
+<div class="period-presets"><button data-preset="7">7 dias</button><button data-preset="30">30 dias</button><button data-preset="90">90 dias</button><button data-preset="custom">Personalizado</button></div>
+<div class="period-dates"><label>De<input id="since" type="date"></label><label>Até<input id="until" type="date"></label></div>
+<span id="periodSource" class="period-source"></span>
+</section>
+<main>
+<section id="page-overview" class="page active">
+<section class="hero-row"><div><h1>Olá, Léo! <span>👋</span></h1><p>Visão executiva da aquisição e do funil comercial.</p></div><blockquote>“Disciplina hoje, patrimônio amanhã.”<small>— Referência Capital</small></blockquote></section>
+<section class="kpis" id="kpiGrid"></section>
+<section class="panel funnel-panel overview-block">
+<div class="panel-head"><div><h2>Desempenho do Funil</h2><p>Da impressão ao resultado comercial, com leitura dos vazamentos por etapa.</p></div><select id="funnelMode"><option value="rate">Taxa de conversão entre etapas</option><option value="loss">Perda entre etapas</option></select></div>
+<div id="funnelSteps" class="funnel-steps"></div>
+</section>
+<section class="panel trend-panel overview-block">
+<div class="panel-head"><div><h2>Leads captados</h2><p>Evolução no período selecionado.</p></div><select id="trendMetric"><option value="leads">Leads</option><option value="spend">Investimento</option><option value="clicks">Cliques</option></select></div>
+<canvas id="trendCanvas" width="1500" height="300"></canvas>
+</section>
+</section>
+<section id="page-optimization" class="page"><div id="optimizationApp"></div></section>
+<section id="page-audit" class="page"><div id="auditApp"></div></section>
+<section id="page-funnel" class="page"><div id="funnelApp"></div></section>
+<section id="page-crm" class="page"><div id="crmApp"></div></section>
+<section id="page-comercial" class="page"><div id="comercialApp"></div></section>
+<section id="page-calculator" class="page"><div id="calculatorApp"></div></section>
+</main>
+</div>
+<div id="modal" class="modal hidden"><div class="modal-card wide">
+<div class="modal-head"><div><h2>Configurações</h2><p>Período, integrações e contas ficam concentrados aqui para manter o dashboard mais clean.</p></div><button id="closeModal" class="icon-btn">×</button></div>
+<div class="settings-date"><span class="settings-note">O período do painel fica na barra do topo e vale para todas as abas.</span><button id="refreshBtn" class="gold-btn">Atualizar base agora</button></div>
+<div class="integration-tabs"><button class="integration-tab active" data-integration="meta">Meta Ads</button><button class="integration-tab" data-integration="crm">PipeRun CRM</button></div>
+<div id="metaPane" class="integration-pane active">
+<label>Access Token da Meta<input id="accessToken" type="password" placeholder="Token salvo no backend — deixe em branco para manter"><small>O token permanece criptografado no backend.</small></label>
+<label>Versão da Graph API<input id="apiVersion" value="v26.0" placeholder="v26.0"></label>
+<div class="modal-actions"><button id="connectBtn" class="gold-btn">Conectar e listar contas</button></div>
+<div class="accounts-head"><strong>Contas disponíveis</strong><div><button id="selectAllAccounts" class="link-btn">Selecionar todas</button><button id="clearAccounts" class="link-btn">Limpar</button><span id="accountSelectionLabel">0 selecionadas</span></div></div>
+<div id="accountsList" class="accounts-list"><div class="empty">Conecte a API para carregar suas contas.</div></div>
+<div class="modal-footer"><span id="modalStatus"></span><button id="saveAccountsBtn" class="gold-btn">Salvar seleção</button></div>
+</div>
+<div id="crmPane" class="integration-pane">
+<div class="crm-connect-copy"><b>PipeRun CRM</b><p>Usado somente para a operação da Referência Capital.</p></div>
+<label>Token de API do PipeRun<input id="pipeRunToken" type="password" placeholder="Token salvo no backend — deixe em branco para manter"><small>O token permanece criptografado no backend.</small></label>
+<div class="crm-pipeline-grid"><label>Pipeline de Prospecção (SDR)<select id="prospectionPipelineId" disabled><option value="78790">#78790</option></select><small>Fixo: pipeline 78790. Filtra a captação e o trabalho dos SDRs.</small></label><label>Pipeline dos Closers<select id="closerPipelineId" disabled><option value="84566">#84566</option></select><small>Fixo: pipeline 84566. Filtra reuniões, propostas, vendas e receita.</small></label></div><div class="crm-pipeline-previews"><div id="prospectionPipelinePreview" class="crm-pipeline-preview"><span class="crm-preview-empty">Selecione o funil de prospecção para visualizar a prévia.</span></div><div id="closerPipelinePreview" class="crm-pipeline-preview"><span class="crm-preview-empty">Selecione o funil dos closers para visualizar a prévia.</span></div></div>
+<div class="modal-actions"><button id="connectCrmBtn" class="gold-btn">Conectar e testar PipeRun</button></div>
+<div id="crmConnectionResult" class="connection-result">Ainda não conectado.</div>
+<div id="crmHealth" class="crm-health">
+  <div class="crm-health-head"><strong>Saúde da integração</strong><span id="crmHealthStatus" class="crm-health-status">Aguardando dados</span></div>
+  <div id="crmHealthGrid" class="crm-health-grid"></div>
+  <div id="crmHealthNote" class="crm-health-note">Conecte o PipeRun e selecione os funis para validar a integração.</div>
+</div>
+</div>
+</div></div>
+<div id="toast" class="toast hidden"></div>
+<script src="/period.js?v=20260929-8"></script>
+<script src="/app.js?v=20260929-4"></script>
+<script src="/dashboard-v3.js?v=20260930-4"></script>
+<script src="/optimization.js?v=20261013-1"></script>
+<script src="/rc.js?v=20261012-3"></script>
+</body>
+</html>

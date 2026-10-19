@@ -1,0 +1,30 @@
+-- Anúncio × dia dos últimos ~35 dias (dados quentes do Cloudflare). Histórico completo fica no PC.
+CREATE TABLE IF NOT EXISTS meta_ad_day (
+  ad_id TEXT NOT NULL,
+  day TEXT NOT NULL,
+  account_id TEXT,
+  account_name TEXT,
+  campaign_id TEXT,
+  campaign_name TEXT,
+  adset_id TEXT,
+  adset_name TEXT,
+  ad_name TEXT,
+  spend REAL NOT NULL DEFAULT 0,
+  impressions INTEGER NOT NULL DEFAULT 0,
+  reach INTEGER NOT NULL DEFAULT 0,
+  clicks INTEGER NOT NULL DEFAULT 0,
+  inline_link_clicks INTEGER NOT NULL DEFAULT 0,
+  outbound_clicks REAL NOT NULL DEFAULT 0,
+  lpv INTEGER NOT NULL DEFAULT 0,
+  leads INTEGER NOT NULL DEFAULT 0,
+  views3 INTEGER NOT NULL DEFAULT 0,
+  v25 INTEGER NOT NULL DEFAULT 0,
+  v50 INTEGER NOT NULL DEFAULT 0,
+  v75 INTEGER NOT NULL DEFAULT 0,
+  v95 INTEGER NOT NULL DEFAULT 0,
+  v100 INTEGER NOT NULL DEFAULT 0,
+  thru INTEGER NOT NULL DEFAULT 0,
+  updated_at TEXT NOT NULL,
+  PRIMARY KEY(ad_id, day)
+) WITHOUT ROWID;
+CREATE INDEX IF NOT EXISTS idx_meta_ad_day_day ON meta_ad_day(day);

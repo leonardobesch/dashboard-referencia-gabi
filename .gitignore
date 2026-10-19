@@ -1,0 +1,11 @@
+node_modules/
+.wrangler/
+.env
+.env.*
+.dev.vars*
+*.sqlite*
+*.db
+archive/config.json
+archive/data/
+*.pem
+*.key

@@ -1,0 +1,1 @@
+{\"workerUrl\":\"https://SEU-WORKER.workers.dev\",\"archiveKey\":\"DEFINA_COM_WRANGLER_SECRET\",\"dashboardOrigin\":\"https://SEU-WORKER.workers.dev\",\"port\":8789,\"syncMinutes\":15,\"hotRefreshDays\":7,\"initialSince\":\"2020-01-01\",\"metaChunkDays\":14,\"backfillChunksPerSync\":4}

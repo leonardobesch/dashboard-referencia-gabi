@@ -1,0 +1,23 @@
+name = "referencia-capital-growth-os"
+main = "worker.js"
+compatibility_date = "2026-09-25"
+workers_dev = true
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+run_worker_first = true
+not_found_handling = "single-page-application"
+
+[[kv_namespaces]]
+binding = "META_CONFIG"
+id = "COLE-AQUI-O-ID-DO-SEU-KV"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "referencia-capital-growth-db"
+database_id = "COLE-AQUI-O-ID-DO-SEU-D1"
+
+[triggers]
+# Sem cron: o PC (archive/service.mjs) busca Meta/PipeRun e envia ao Cloudflare.
+crons = []

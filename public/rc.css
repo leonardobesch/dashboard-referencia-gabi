@@ -1,0 +1,109 @@
+/* Abas CRM e Comercial — mesma linguagem visual do painel (verde profundo + dourado) */
+.rc-alertbar{display:flex;flex-wrap:wrap;gap:10px;padding:10px 34px;background:rgba(3,41,34,.92);border-bottom:1px solid var(--line-soft)}
+.rc-alert{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;border:1px solid var(--line);font-size:13px;color:var(--text);background:var(--panel);cursor:pointer}
+.rc-alert b{font-variant-numeric:tabular-nums}
+.rc-alert.crit{border-color:rgba(255,142,135,.55);background:rgba(255,142,135,.10)}
+.rc-alert.warn{border-color:rgba(237,207,130,.5);background:rgba(237,207,130,.08)}
+.rc-alert.ok{border-color:rgba(81,212,156,.45)}
+.rc-dot{width:8px;height:8px;border-radius:50%;background:var(--muted);display:inline-block}
+.crit .rc-dot{background:var(--red);animation:rcPulse 1.4s infinite}.warn .rc-dot{background:var(--amber)}.ok .rc-dot,.rc-dot.on{background:var(--green)}
+@keyframes rcPulse{50%{opacity:.35}}
+.rc-wrap{padding:24px 34px;display:grid;gap:18px}
+.rc-head{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.rc-head h1{margin:0;font-size:26px}.rc-head p{margin:4px 0 0;color:var(--muted)}
+.rc-tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.rc-seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.rc-seg button{background:transparent;border:0;color:var(--muted);padding:8px 14px;cursor:pointer}
+.rc-seg button.on{background:var(--gold);color:#13281f;font-weight:700}
+.rc-tools select,.rc-tools input{background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+.rc-src{font-size:12px;color:var(--muted)}
+.rc-board{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(250px,1fr);gap:12px;overflow-x:auto;padding-bottom:8px}
+.rc-col{background:var(--panel);border:1px solid var(--line-soft);border-radius:14px;display:flex;flex-direction:column;max-height:72vh;min-width:0}
+.rc-col h3{margin:0;padding:12px 14px;font-size:14px;display:flex;justify-content:space-between;gap:8px;border-bottom:1px solid var(--line-soft)}
+.rc-col h3 small{color:var(--muted);font-weight:400}
+.rc-col h3 .st{color:var(--red);font-weight:600}
+.rc-cards{overflow-y:auto;padding:10px;display:grid;gap:8px;align-content:start}
+.rc-card{background:var(--panel2);border:1px solid var(--line-soft);border-radius:10px;padding:10px 12px;cursor:pointer;display:grid;gap:4px;text-align:left;color:var(--text)}
+.rc-card:hover,.rc-card:focus-visible{border-color:var(--gold);outline:none}
+.rc-card .t{font-weight:600;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rc-card .m{font-size:12px;color:var(--muted);display:flex;justify-content:space-between;gap:6px}
+.rc-timer{font-variant-numeric:tabular-nums;font-weight:700;font-size:12px;padding:2px 7px;border-radius:6px;background:rgba(81,212,156,.14);color:var(--green)}
+.rc-timer.warn{background:rgba(237,207,130,.15);color:var(--amber)}
+.rc-timer.crit{background:rgba(255,142,135,.15);color:var(--red)}
+.rc-more{font-size:12px;color:var(--muted);text-align:center;padding:6px}
+/* Ficha do lead */
+.rc-drawer{position:fixed;inset:0;z-index:200;display:flex;justify-content:flex-end;background:rgba(0,0,0,.45)}
+.rc-drawer>section{width:min(640px,100%);height:100%;overflow-y:auto;background:var(--bg2);border-left:1px solid var(--line);padding:22px;display:grid;gap:16px;align-content:start}
+.rc-drawer header{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.rc-drawer h2{margin:0;font-size:20px}
+.rc-x{background:transparent;border:1px solid var(--line);color:var(--text);border-radius:8px;width:34px;height:34px;cursor:pointer}
+.rc-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.rc-facts div{background:var(--panel);border-radius:10px;padding:8px 10px;font-size:13px;min-width:0}
+.rc-facts span{display:block;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.05em}
+.rc-box{background:var(--panel);border:1px solid var(--line-soft);border-radius:12px;padding:14px}
+.rc-box h4{margin:0 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--gold)}
+.rc-pre{white-space:pre-wrap;font-size:13px;line-height:1.5;margin:0;color:var(--text)}
+.rc-tl{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.rc-tl li{display:grid;grid-template-columns:96px 14px 1fr;gap:10px;padding-bottom:14px;position:relative}
+.rc-tl time{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;text-align:right}
+.rc-tl i{width:12px;height:12px;border-radius:50%;margin-top:3px;background:var(--gold);position:relative}
+.rc-tl li:not(:last-child) i:after{content:'';position:absolute;left:5px;top:14px;width:2px;height:calc(100% + 8px);background:var(--line-soft)}
+.rc-tl .k-etapa i{background:#7fb6ff}.rc-tl .k-nota i{background:var(--muted)}.rc-tl .k-reuniao i{background:var(--amber)}.rc-tl .k-venda i{background:var(--green)}.rc-tl .k-perda i{background:var(--red)}.rc-tl .k-formulario i{background:#c99bff}.rc-tl .k-ligacao i{background:#5fd0d0}
+.rc-tl b{font-size:13px;display:block}.rc-tl p{margin:2px 0 0;font-size:12.5px;color:var(--muted);white-space:pre-wrap;line-height:1.45}
+.rc-loss{display:grid;gap:8px}.rc-loss select,.rc-loss textarea{background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:8px;padding:8px}
+.rc-btn{background:var(--gold);color:#13281f;border:0;border-radius:9px;padding:9px 14px;font-weight:700;cursor:pointer;justify-self:start}
+/* Comercial */
+.rc-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.rc-kpi{background:var(--panel);border:1px solid var(--line-soft);border-radius:12px;padding:12px 14px}
+.rc-kpi span{display:block;font-size:12px;color:var(--muted)}
+.rc-kpi strong{font-size:26px;font-variant-numeric:tabular-nums}
+.rc-kpi.crit strong{color:var(--red)}.rc-kpi.good strong{color:var(--green)}
+.rc-grid2{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:14px}
+@media (max-width:1000px){.rc-grid2{grid-template-columns:1fr}.rc-wrap{padding:18px 16px}.rc-alertbar{padding:10px 16px}}
+.rc-table{width:100%;border-collapse:collapse;font-size:13px}
+.rc-table th{text-align:left;color:var(--muted);font-weight:500;font-size:12px;padding:8px;border-bottom:1px solid var(--line-soft)}
+.rc-table td{padding:8px;border-bottom:1px solid var(--line-soft);font-variant-numeric:tabular-nums;vertical-align:top}
+.rc-table .num{text-align:right}
+.rc-scroll{overflow-x:auto}
+.rc-wait{display:flex;flex-wrap:wrap;gap:4px}
+.rc-chart{width:100%;height:220px}
+.rc-chart text{fill:var(--muted);font-size:11px}
+.rc-bars{display:grid;gap:6px}
+.rc-barrow{display:grid;grid-template-columns:minmax(0,1fr) 60px;gap:8px;align-items:center;font-size:13px}
+.rc-barrow div{position:relative;padding:5px 8px;border-radius:6px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.rc-barrow div:before{content:'';position:absolute;inset:0;width:var(--w);background:rgba(232,196,108,.18);z-index:-1}
+.rc-barrow span{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted)}
+.rc-tag{font-size:11px;padding:1px 6px;border-radius:5px;background:var(--panel2);color:var(--muted)}
+/* Sincronização é automática no PC: some com os botões de sincronizar */
+#refreshBtn,#optSyncBtn{display:none!important}
+.rc-refresh{background:transparent;border:1px solid var(--line);color:var(--text);border-radius:10px;padding:7px 12px;cursor:pointer;font-size:13px}
+.rc-refresh:hover{border-color:var(--gold)}
+/* Prévia do criativo na Otimização (entre a seleção e o nome) */
+.opt-thumb{position:relative;flex:none;width:44px;height:44px;border-radius:8px;overflow:visible;background:var(--panel2);border:1px solid var(--line-soft);display:inline-grid;place-items:center;color:var(--muted);font-size:14px}
+.opt-thumb>img{width:100%;height:100%;object-fit:cover;border-radius:8px}
+.opt-thumb .big{display:none;position:absolute;left:52px;top:50%;transform:translateY(-50%);width:220px;height:auto;max-height:320px;object-fit:contain;background:#000;border:1px solid var(--line);box-shadow:0 12px 30px rgba(0,0,0,.45);z-index:30}
+.opt-thumb:hover .big{display:block}
+.opt-entity{align-items:center}
+/* Balões da Otimização */
+.rc-pop{position:fixed;z-index:300;display:none;width:min(400px,calc(100vw - 16px));max-height:min(440px,70vh);overflow:auto;background:var(--bg2);border:1px solid var(--gold);border-radius:12px;padding:12px 14px;box-shadow:0 18px 44px rgba(0,0,0,.5);font-size:13px;color:var(--text)}
+.rc-pop-t{display:block;margin-bottom:6px;font-size:14px}
+.rc-pop-tb{width:100%;border-collapse:collapse;margin:6px 0;font-variant-numeric:tabular-nums}
+.rc-pop-tb th{font-weight:500;color:var(--muted);text-align:right;padding:4px 6px;font-size:12px}.rc-pop-tb th:first-child,.rc-pop-tb td:first-child{text-align:left}
+.rc-pop-tb td{padding:5px 6px;border-top:1px solid var(--line-soft);text-align:right}
+.rc-pop-tb tfoot td{border-top:1px solid var(--gold);color:var(--gold)}
+.rc-pop-list{display:grid;gap:6px;margin-top:8px}
+.rc-pop-lead{display:grid;gap:2px;text-align:left;background:var(--panel);border:1px solid var(--line-soft);border-radius:8px;padding:8px 10px;color:var(--text);cursor:pointer}
+.rc-pop-lead:hover,.rc-pop-lead:focus-visible{border-color:var(--gold);outline:none}
+.rc-pop-lead small{color:var(--muted)}
+.opt-leadlink{cursor:pointer;text-decoration:underline dotted;text-underline-offset:3px}
+.opt-leadlink:hover{color:var(--gold)}
+.opt-score[data-break]{cursor:help}
+/* Linha de total da Otimização */
+.opt-row-total td{position:sticky;bottom:0;z-index:4;background:#0c3d33;border-top:2px solid var(--gold);font-weight:700}
+.opt-row-total td.sticky-col{z-index:6}
+.opt-row-total strong{color:var(--gold);letter-spacing:.08em}
+.rc-tl .k-visita i{background:#e8c46c}
+/* Otimização: conta de anúncios e atalho para o Gerenciador */
+.opt-acct{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:130px}
+.opt-am{display:inline-grid;place-items:center;width:20px;height:20px;margin-left:4px;border-radius:5px;border:1px solid var(--line);color:var(--gold);text-decoration:none;font-size:12px;vertical-align:middle}
+.opt-am:hover,.opt-am:focus-visible{background:var(--gold);color:#13281f;outline:none}
